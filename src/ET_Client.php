@@ -614,7 +614,7 @@ class ET_Client extends SoapClient
 	public function getAuthToken($tenantKey = null) 
 	{
 		$tenantKey = $tenantKey == null ? $this->tenantKey : $tenantKey;
-		if ($this->tenantTokens[$tenantKey] == null) {
+		if (!isset($this->tenantTokens[$tenantKey])) {
 			$this->tenantTokens[$tenantKey] = array();
 		}		
 		return isset($this->tenantTokens[$tenantKey]['authToken']) 
@@ -630,7 +630,7 @@ class ET_Client extends SoapClient
 	*/
 	function setAuthToken($tenantKey, $authToken, $authTokenExpiration) 
 	{
-		if ($this->tenantTokens[$tenantKey] == null) {
+		if (!isset($this->tenantTokens[$tenantKey])) {
 			$this->tenantTokens[$tenantKey] = array();
 		}
 		$this->tenantTokens[$tenantKey]['authToken'] = $authToken;
@@ -645,7 +645,7 @@ class ET_Client extends SoapClient
 	function getAuthTokenExpiration($tenantKey) 
 	{
 		$tenantKey = $tenantKey == null ? $this->tenantKey : $tenantKey;
-		if ($this->tenantTokens[$tenantKey] == null) {
+		if (!isset($this->tenantTokens[$tenantKey])) {
 			$this->tenantTokens[$tenantKey] = array();
 		}
 		return isset($this->tenantTokens[$tenantKey]['authTokenExpiration'])
@@ -661,7 +661,7 @@ class ET_Client extends SoapClient
 	function getInternalAuthToken($tenantKey) 
 	{
 		$tenantKey = $tenantKey == null ? $this->tenantKey : $tenantKey;	
-		if ($this->tenantTokens[$tenantKey] == null) {
+		if (!isset($this->tenantTokens[$tenantKey])) {
 			$this->tenantTokens[$tenantKey] = array();
 		}
 		return isset($this->tenantTokens[$tenantKey]['internalAuthToken'])
